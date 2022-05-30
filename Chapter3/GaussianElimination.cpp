@@ -1,4 +1,6 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<stdio.h>
+#include <math.h>
 using namespace std;
 
 const int N = 5e2 + 5;
@@ -180,10 +182,10 @@ struct Matrix {
 
 int main(void) {
 	now.read();
-	// now.GaussianElimination(true, "all");
+	now.GaussianElimination(true, "all");
 	// now.CroutSplit();
-	double x[N] = {0, 0, 0};
-	now.JacobiMethod(x, 20);
+	// double x[N] = {0, 0, 0};
+	// now.JacobiMethod(x, 20);
 	// now.GaussSeidelMethod(x, 20);
 	return 0;
 }
