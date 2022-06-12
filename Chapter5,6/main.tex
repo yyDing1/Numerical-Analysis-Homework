@@ -1,0 +1,128 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{ctex}
+\usepackage{setspace}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[colorlinks,linkcolor=blue]{hyperref}
+\setlength{\baselineskip}{30pt}
+\RequirePackage{listings}
+\RequirePackage{xcolor}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\lstset{
+	numbers=left,  
+	frame=tb,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	framerule=1pt,
+	rulecolor=\color{gray!35},
+	backgroundcolor=\color{gray!5},
+	basicstyle={\ttfamily},
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=4,
+}
+
+\title{第四次作业}
+\author{1929401206 丁誉洋}
+\date{2022.6.12}
+\begin{document}
+
+\maketitle
+
+\noindent\textbf{题目 1}: 把区间 $[0, 2]$ 分为八等分，采用分点上的函数值，分别以复合梯形公式，复合 Simpson 公式和复合 Cotes 公式计算以下定积分。
+
+$\int_0^2(xe^{-x} + 1)dx$
+
+按照 $4$ 位小数计算
+
+\noindent 解：
+
+\begin{center}
+\begin{tabular}{|c|c|}
+    \hline
+    $x$ & $f(x) = xe^{-x} + 1$ \\
+    \hline
+    0.00 & 1.0000 \\
+    \hline
+    0.25 & 1.1947 \\
+    \hline
+    0.50 & 1.3033 \\
+    \hline
+    0.75 & 1.3543 \\
+    \hline
+    1.00 & 1.3679 \\
+    \hline
+    1.25 & 1.3581 \\
+    \hline
+    1.50 & 1.3347 \\
+    \hline
+    1.75 & 1.3041 \\
+    \hline
+    2.00 & 1.2707 \\
+    \hline
+\end{tabular}
+\end{center}
+
+$T_8 = \frac{2}{2}\frac{1}{8}[f(0) + f(2) + 2\sum\limits_{k = 1}^{7}f(\frac{k}{4})] = 2.5881$
+
+$S_4 = \frac{2}{6}\frac{1}{4}[f(0) + f(1) + 2\sum\limits_{k = 1}^3f(\frac{k}{2}) + 4\sum\limits_{k = 1}^4f(\frac{2k - 1}{4})] = 2.5939$
+
+$C_2 = \frac{2}{90}\frac{1}{2}[7(f(0) + f(2)) + 14f(1) + 12(f(\frac{1}{2}) + f(\frac{3}{2})) + 32(f(\frac{1}{4}) + f(\frac{3}{4}) + f(\frac{5}{4}) + f(\frac{7}{4}))] = 2.5940$ \\
+
+\noindent\textbf{题目 2}: 取步长 $h = 0.1$ 用改进欧拉公式求解常微分方程初值问题
+$$
+\left\{
+\begin{aligned}
+&y' + xy = 0 \\
+&y(0) = 1
+\end{aligned}
+\right.
+$$
+在 $x = 0.4$ 处的近似值。按照四位小数计算。
+
+
+由改进欧拉公式得
+$$
+\left\{
+\begin{aligned}
+\Tilde{y}_{i + 1} &= y_i - 0.1\times x_iy_i \\
+y_{i + 1} &= y_i - \frac{h}{2}(x_iy_i + x_{i + 1}\Tilde{y}_{i + 1})
+\end{aligned}
+\right.
+$$
+
+% y(0) &= 1 \\
+% \Tilde{y}(0.1) &= 1 - 0.1\times 0\times 1 = 1 \\
+% \Tilde{y}(0.2) &= 1 - 0.1\times 0.1\times 1 = 0.99 \\
+% \Tilde{y}(0.3) &= 0.99 - 0.1\times 0.2\times 0.99 = 0.9702 \\
+% \Tilde{y}(0.4) &= 0.9702 - 0.1\times 0.3 \times 0.9702 = 0.9411
+
+所以
+$$
+\begin{aligned}
+y(0) &= 1 \\
+\Tilde{y}(0.1) &= 1 - 0.1\times 0\times 1 = 1 \\
+y(0.1) &= 1 - 0.05\times (0\times 1 + 0.1\times 1) = 0.995 \\
+\Tilde{y}(0.2) &= 0.995 - 0.1\times 0.1\times 0.995 = 0.9851 \\
+y(0.2) &= 0.995 - 0.05\times (0.1\times 0.995 + 0.2\times 0.9851) = 0.9802 \\
+\Tilde{y}(0.3) &= 0.9802 - 0.1\times 0.2\times 0.9802 = 0.9606 \\
+y(0.3) &= 0.9802 - 0.05\times (0.2\times 0.9802 + 0.3\times 0.9606) = 0.9560 \\
+\Tilde{y}(0.4) &= 0.9560 - 0.1\times 0.3\times 0.9560 = 0.9273 \\
+y(0.4) &= 0.9560 - 0.05\times (0.3\times 0.9560 + 0.4\times 0.9273) = 0.9231
+\end{aligned}
+$$
+
+近似值为 $y(0.4) = 0.9231$
+
+\end{document}
